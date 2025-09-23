@@ -151,7 +151,7 @@ main {
   width: 100%;
   margin: 0 auto;
   max-width: 400px;
-  margin-top: 280px;
+  /* margin-top: 280px; */
 }
 .login-card h3 {
   font-weight: bold;
@@ -247,10 +247,6 @@ input:-webkit-autofill:focus {
   padding: 40px 0px;
   font-size: 50px;
   text-align: center;
-}
-div#chatBody{
-  /* height: 790px;
-  overflow: scroll; */
 }
 div#chatBody::-webkit-scrollbar{
   display: none;
