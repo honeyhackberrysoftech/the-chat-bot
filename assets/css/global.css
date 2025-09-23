@@ -269,6 +269,9 @@ div#chatBody::-webkit-scrollbar{
     --text-one: 50px;
     --text-tow: 45px;
   }
+  .banner-section p{
+    width: 70%;
+  }
 }
 @media (max-width: 425px) {
   :root{
