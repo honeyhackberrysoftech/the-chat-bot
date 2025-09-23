@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ChatGPT Style Chatbot</title>
+<!-- icon -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <!-- bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+<link rel="stylesheet" href="assets/css/chat-bot.css">
+</head>
+<body>
+
+  <!-- Chat messages -->
+  <div class="chat-container" id="chatContainer">
+    <h1 class="text-center">Banking & Finance</h1>
+    <div class="bot-msg message">Hello 👋 I’m your ChatGPT-style bot. Ask me anything!</div>
+  </div>
+<button class="scroll-btn" id="scrollBtn">⬇</button>
+
+  <!-- Input area -->
+  <div class="input-area">
+    <input type="text" id="userInput" placeholder="Type your message here..." />
+    <button onclick="sendMessage()">
+        <svg  xmlns="http://www.w3.org/2000/svg"  width="30"  height="30"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-arrow-right"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 12l14 0" /><path d="M13 18l6 -6" /><path d="M13 6l6 6" /></svg>
+    </button>
+  </div>
+
+    <!-- bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+<script>
+ const chatContainer = document.getElementById("chatContainer");
+  const userInput = document.getElementById("userInput");
+  const scrollBtn = document.getElementById("scrollBtn");
+
+  // Bot replies
+  function getBotReply(input) {
+    input = input.toLowerCase();
+    if (input.includes("hello") || input.includes("hi")) {
+      return "Hi there! 👋 How can I help you today?";
+    } else if (input.includes("time")) {
+      return "⏰ Current time is: " + new Date().toLocaleTimeString();
+    } else if (input.includes("date")) {
+      return "📅 Today's date is: " + new Date().toLocaleDateString();
+    } else {
+      return "🤔 That's interesting! Could you tell me more?";
+    }
+  }
+
+  // Send message
+  function sendMessage() {
+    const message = userInput.value.trim();
+    if (message === "") return;
+
+    // Add user message
+    const userMsgDiv = document.createElement("div");
+    userMsgDiv.classList.add("user-msg", "message");
+    userMsgDiv.textContent = message;
+    chatContainer.appendChild(userMsgDiv);
+    userInput.value = "";
+
+    // Scroll to bottom
+    chatContainer.scrollTop = chatContainer.scrollHeight;
+
+    // Bot reply
+    setTimeout(() => {
+      const botMsgDiv = document.createElement("div");
+      botMsgDiv.classList.add("bot-msg", "message");
+      botMsgDiv.textContent = getBotReply(message);
+      chatContainer.appendChild(botMsgDiv);
+      chatContainer.scrollTop = chatContainer.scrollHeight;
+    }, 600);
+  }
+
+  // Enter key triggers send
+  userInput.addEventListener("keypress", (e) => {
+    if (e.key === "Enter") sendMessage();
+  });
+
+  // Show/hide scroll button on scroll
+  chatContainer.addEventListener("scroll", () => {
+    const nearBottom = chatContainer.scrollHeight - chatContainer.scrollTop <= chatContainer.clientHeight + 100;
+    scrollBtn.style.display = nearBottom ? "none" : "block";
+  });
+
+  // Scroll to bottom on button click
+  scrollBtn.addEventListener("click", () => {
+    chatContainer.scrollTop = chatContainer.scrollHeight;
+  });
+</script>
+
+</body>
+</html>

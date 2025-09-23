@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <!-- costum-style -->
+    <link rel="stylesheet" href="assets/css/global.css">
+</head>
+
+<body>
+    <main>
+        <div class="chat-title">
+            <h2>
+                Healthcare
+            </h2>
+        </div>
+        <section class="chat-box">
+            <div class="container">
+                <div class="chat-container">
+                    <div class="chat-header"></div>
+                    <div class="chat-body" id="chatBody">
+                        <!-- <div class="message bot-msg"></div> -->
+                    </div>
+                    <div class="chat-footer">
+                        <input type="text" id="userInput" placeholder="Type your message...">
+                        <button id="sendBtn"><img src="assets/image/arrow.png" alt=""></button>
+                    </div>
+                </div>
+        </section>
+  <div class="background-ring"></div>
+
+    </main>
+
+    <!-- bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+    <!-- radio button -->
+    <script>
+
+
+        // Attach event listener to all radio buttons
+        document.querySelectorAll('input[name="redirect"]').forEach(radio => {
+            radio.addEventListener('click', function () {
+                window.location.href = this.value; // Redirect on click
+            });
+        });
+    </script>
+    <!-- chat bot -->
+
+    <script>
+        const chatBody = document.getElementById("chatBody");
+        const userInput = document.getElementById("userInput");
+        const sendBtn = document.getElementById("sendBtn");
+
+        // Send button click
+        sendBtn.addEventListener("click", sendMessage);
+
+        // Enter key press
+        userInput.addEventListener("keypress", function (e) {
+            if (e.key === "Enter") {
+                sendMessage();
+            }
+        });
+
+        // Function to send message
+        function sendMessage() {
+            const msg = userInput.value.trim();
+            if (msg === "") return;
+
+            // Add user message
+            const userMsg = document.createElement("div");
+            userMsg.classList.add("message", "user-msg");
+            userMsg.innerText = msg;
+            chatBody.appendChild(userMsg);
+
+            userInput.value = "";
+            chatBody.scrollTop = chatBody.scrollHeight;
+
+            // Bot reply
+            setTimeout(() => {
+                const botMsg = document.createElement("div");
+                botMsg.classList.add("message", "bot-msg");
+                botMsg.innerText = getBotReply(msg);
+                chatBody.appendChild(botMsg);
+                chatBody.scrollTop = chatBody.scrollHeight;
+            }, 600);
+        }
+
+       // Dictionary of questions and answers
+const botReplies = {
+    "hello": "Hi there! 👋 How can I help you today?",
+    "hi": "Hello! 😊 What’s up?",
+    "how are you": "I’m doing great, thanks for asking! How about you?",
+    "what is ai": "🤖 AI stands for Artificial Intelligence — machines that can learn, reason, and act like humans!",
+    "what is python": "🐍 Python is a powerful programming language used for AI, web apps, and data science.",
+    "what is javascript": "✨ JavaScript is the language of the web, used to make pages interactive.",
+    "who are you": "I’m a ChatGPT-style bot 🤖 built to chat and answer your questions!",
+    "your name": "You can call me SmartBot 🤖.",
+    "bye": "Goodbye! 👋 Have a wonderful day!",
+    "thanks": "You're welcome! 😊 Anytime.",
+    "thank you": "Happy to help! 🙌",
+    "help": "Sure! Ask me about AI, Python, JavaScript, time, date, or just say hello.",
+    "time": "⏰ Current time is: " + new Date().toLocaleTimeString(),
+    "date": "📅 Today's date is: " + new Date().toLocaleDateString(),
+    "what is html": "📄 HTML is the standard markup language for building web pages.",
+    "what is css": "🎨 CSS is used to style and design web pages beautifully.",
+    "what is bootstrap": "📦 Bootstrap is a front-end framework for building responsive websites quickly.",
+    "who invented you": "I was created by a developer using JavaScript, HTML, and CSS 😎."
+};
+
+// Bot reply function
+function getBotReply(input) {
+    input = input.toLowerCase().trim();
+
+    // Search dictionary
+    for (let key in botReplies) {
+        if (input.includes(key)) {
+            // If reply includes time or date, recalc each time
+            if (key === "time") return "⏰ Current time is: " + new Date().toLocaleTimeString();
+            if (key === "date") return "📅 Today's date is: " + new Date().toLocaleDateString();
+            return botReplies[key];
+        }
+    }
+
+    // Default reply
+    return "🤔 That's interesting! Could you tell me more?";
+}
+    </script>
+</body>
+
+</html>
