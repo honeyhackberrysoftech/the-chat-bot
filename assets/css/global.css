@@ -148,7 +148,7 @@ main {
     0.3em 0.3em 1em rgba(104, 104, 104, 0.6);
   padding: 40px;
   border-radius: 12px;
-  width: 100%;
+  /* width: 100%; */
   margin: 0 auto;
   max-width: 400px;
   /* margin-top: 280px; */
