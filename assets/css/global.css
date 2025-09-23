@@ -290,6 +290,9 @@ div#chatBody::-webkit-scrollbar{
   .sarvices-section h2{
     font-size: 30px;
   }
+  .sarvices-cards a{
+    width: 100%;
+  }
 }
 @media (max-width: 375px) {
       :root {
