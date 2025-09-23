@@ -263,6 +263,9 @@ div#chatBody::-webkit-scrollbar{
   .sarvices-card .services-cantent h3{
     font-size: 16px;
   }
+  .sarvices-card{
+    width: 40%;
+  }
 }
 @media (max-width: 768px) {
   :root{
@@ -284,17 +287,26 @@ div#chatBody::-webkit-scrollbar{
   .sarvices-section{
     padding: 20px 20px;
   }
+  .sarvices-section h2{
+    font-size: 30px;
+  }
 }
 @media (max-width: 375px) {
       :root {
         --text-one: 32px;
         --text-tow: 30px;
     }
+    .sarvices-section h2{
+      font-size: 25px;
+    }
 }
 @media (max-width: 320px) {
   :root {
         --text-one: 30px;
         --text-tow: 27px;
+    }
+    .sarvices-section h2{
+      font-size: 20px;
     }
   .login-card{
     margin-top: 60px;
