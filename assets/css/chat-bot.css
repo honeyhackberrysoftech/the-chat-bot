@@ -9,6 +9,29 @@
   --text-five: 16px;
   --text-six: 10px;
 }
+ /* Large blurred ring */
+  .background-ring {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 90%;       /* size of the ring */
+    height: 100%;
+    border: 50px solid rgba(105, 9, 184, 0.13); 
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    filter: blur(30px);  /* blur for soft glow */
+    z-index: -1;         /* behind all content */
+  }
+
+  /* Optional: add subtle animation (rotation) */
+  @keyframes rotateRing {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
+  }
+
+  .background-ring {
+    animation: rotateRing 30s linear infinite;
+  }
 /* Dark ChatGPT-like theme */
   body {
   min-height: 100vh;
