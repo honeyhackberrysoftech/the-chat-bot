@@ -260,7 +260,7 @@ div#chatBody::-webkit-scrollbar{
 
 @media (width: 1920px) and (height: 1080px) {
   .sarvices-section{
-    padding-top: 50px;
+    padding-top: 20px;
   }
 }
 @media (max-width: 1920px) {
