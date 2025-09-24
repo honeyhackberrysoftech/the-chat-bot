@@ -269,7 +269,7 @@ div#chatBody::-webkit-scrollbar{
 }
 @media (max-width: 853px) {
   .sarvices-cards {
-    width: 70%;
+    /* width: 70%; */
   }
 }
 @media (max-width: 768px) {
@@ -279,6 +279,11 @@ div#chatBody::-webkit-scrollbar{
   }
   .banner-section p{
     width: 70%;
+  }
+}
+@media (max-width: 430px) {
+   .sarvices-card{
+    width: 100%;
   }
 }
 @media (max-width: 425px) {
@@ -296,6 +301,16 @@ div#chatBody::-webkit-scrollbar{
     font-size: 30px;
   }
   .sarvices-cards {
+    width: 100%;
+    margin: 0 auto;
+  }
+  .sarvices-card{
+    width: 100%;
+  }
+}
+
+@media (max-width: 414px) {
+  .sarvices-card{
     width: 100%;
   }
 }
