@@ -23,7 +23,7 @@
 <body>
   <main>
     <div class="container">
-      <div class="login-card text-center">
+      <!-- <div class="login-card text-center">
         <h3>Login</h3>
         <form id="loginForm" novalidate>
           <div class="mb-3 text-start">
@@ -40,8 +40,25 @@
           <button type="submit" class="btn btn-custom w-100">Login</button>
         </form>
         <p class="mt-3">Don't have an account? <a href="#">Register</a></p>
+      </div> -->
+   
+    <div class="login-card">
+    <h3 class="text-center mb-3">Login</h3>
+    <form id="loginForm" novalidate>
+      <div class="mb-3">
+        <label for="email" class="form-label">Email address</label>
+        <input type="email" class="form-control" id="email" placeholder="Enter email" required>
+        <div class="invalid-feedback" id="emailError">Please enter a valid email.</div>
       </div>
-    </div>
+      <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input type="password" class="form-control" id="password" placeholder="Enter password" required minlength="6">
+        <div class="invalid-feedback" id="passwordError">Password is required.</div>
+      </div>
+      <button type="submit" class="btn btn-custom w-100">Login</button>
+    </form>
+  </div>
+ </div>
      <!-- Large blurred ring in background -->
   <div class="background-ring"></div>
   </main>
@@ -50,8 +67,8 @@
     integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
     crossorigin="anonymous"></script>
   <!-- radio button -->
-  <script>
-    // Set your valid login credentials here
+  <!-- <script>
+    
     const validEmail = "info@hackberrysoftech.com";
     const validPassword = "123456";
 
@@ -59,17 +76,60 @@
     const errorMsg = document.getElementById("errorMsg");
 
     loginForm.addEventListener("submit", function (e) {
-      e.preventDefault(); // stop default form action
+      e.preventDefault();
 
       const email = document.getElementById("email").value.trim();
       const password = document.getElementById("password").value.trim();
 
       if (email === validEmail && password === validPassword) {
-        // ✅ Correct login → redirect
         window.location.href = "index1.html";
       } else {
-        // ❌ Wrong credentials → show error
         errorMsg.textContent = "Invalid email or password!";
+      }
+    });
+  </script> -->
+  <script>
+     // ✅ Only these credentials are accepted
+    const validEmail = "info@hackberrysoftech.com";
+    const validPassword = "123456";
+
+    const loginForm = document.getElementById("loginForm");
+    const emailInput = document.getElementById("email");
+    const passwordInput = document.getElementById("password");
+    const emailError = document.getElementById("emailError");
+    const passwordError = document.getElementById("passwordError");
+
+    loginForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      // Reset states
+      emailInput.classList.remove("is-invalid");
+      passwordInput.classList.remove("is-invalid");
+
+      let hasError = false;
+
+      // 1. Built-in validation (required + email format + minlength)
+      if (!loginForm.checkValidity()) {
+        loginForm.classList.add("was-validated");
+        return;
+      }
+
+      // 2. Custom validation
+      if (emailInput.value.trim() !== validEmail) {
+        emailInput.classList.add("is-invalid");
+        emailError.textContent = "❌ Email not found!";
+        hasError = true;
+      }
+
+      if (passwordInput.value.trim() !== validPassword) {
+        passwordInput.classList.add("is-invalid");
+        passwordError.textContent = "❌ Incorrect password!";
+        hasError = true;
+      }
+
+      // 3. Success → redirect
+      if (!hasError) {
+        window.location.href = "index1.html";
       }
     });
   </script>
