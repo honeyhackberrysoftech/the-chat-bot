@@ -253,6 +253,9 @@ div#chatBody::-webkit-scrollbar{
 }
 /* media query */
 @media (width: 1920px) and (height: 1080px) {
+  .sarvices-section{
+    padding-top: 50px;
+  }
 }
 @media (max-width: 1440px) {}
 @media (max-width: 1024px) {
