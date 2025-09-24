@@ -165,6 +165,16 @@
         right: 40px;
     }
 }
+@media (width: 526px) and (height: 842px) {
+  .input-area{
+    right: 25px;
+  }
+}
+@media (width: 468px) and (height: 749px) {
+  .input-area{
+    right: 25px;
+  }
+}
 @media (max-width: 425px) {
     .chat-container{
         width: 100%;
