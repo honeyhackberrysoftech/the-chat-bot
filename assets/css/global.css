@@ -57,7 +57,7 @@ main {
 /* banner section */
 .banner-section {
   text-align: center;
-  padding-top: 100px;
+  padding-top: 80px;
 }
 .banner-section h1 {
   font-size: var(--text-tow);
@@ -276,9 +276,6 @@ div#chatBody::-webkit-scrollbar{
   }
 }
 @media (max-width: 853px) {
-  .sarvices-cards {
-    /* width: 70%; */
-  }
 }
 @media (max-width: 768px) {
   :root{
