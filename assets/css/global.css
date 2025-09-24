@@ -293,6 +293,11 @@ div#chatBody::-webkit-scrollbar{
   }
 }
 
+@media (max-width: 480px) {
+  .sarvices-card{
+    width: 50%;
+  }
+}
 @media (max-width: 468px) {
   .sarvices-card{
     width: 50%;
