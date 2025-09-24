@@ -257,6 +257,11 @@ div#chatBody::-webkit-scrollbar{
     padding-top: 50px;
   }
 }
+@media (max-width: 1920px) {
+  .sarvices-section{
+    padding-top: 50px;
+  }
+}
 @media (max-width: 1440px) {}
 @media (max-width: 1024px) {
   .sarvices-card .services-cantent{
